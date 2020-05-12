@@ -1,0 +1,28 @@
+#!/bin/bash
+
+enter()
+{
+    echo -en "\nFolytatashoz nyomj entert!"
+    read
+    clear
+}
+
+beker=
+until [ "$beker" = "0" ]; do
+    echo "
+    Valasztasi lehetosegek
+    1 - Szabad lemezterulet mutatasa
+    2 - Szabad memoria mutatasa
+
+    0 - Kilepes
+"
+    echo -n "Valasztott menupont szama:  "
+    read beker
+    echo ""
+    case $beker in
+        1 ) df ; enter;;
+        2 ) free ; enter;;
+        0 ) exit ;;
+        * ) echo "Csak 1, 2, vagy 0-val működik"; enter
+    esac
+done
